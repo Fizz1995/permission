@@ -31,4 +31,6 @@ public interface UserService extends BaseService<User> {
     void delete(List<Long> keys);
 
     void updatePassword(String password);
+
+    List<User> list(User user);
 }

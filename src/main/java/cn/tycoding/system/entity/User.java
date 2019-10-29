@@ -1,5 +1,6 @@
 package cn.tycoding.system.entity;
 
+import com.alibaba.excel.annotation.ExcelProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.ToString;
@@ -21,48 +22,49 @@ import java.util.Date;
 @Table(name = "tb_user")
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 3554316034860494763L;
+	private static final long serialVersionUID = 3554316034860494763L;
 
-    @Id
-    private Long id;
+	@Id
+	@ExcelProperty("主键")
+	private Long id;
+	@ExcelProperty("姓名")
+	private String username;
+	@ExcelProperty("密码")
+	private String password;
 
-    private String username;
+	private String salt;
 
-    private String password;
+	@Column(name = "dept_id")
+	private Long deptId;
 
-    private String salt;
+	@Transient
+	private String deptName;
 
-    @Column(name = "dept_id")
-    private Long deptId;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	@Column(name = "create_time")
+	private Date createTime;
 
-    @Transient
-    private String deptName;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	@Column(name = "modify_time")
+	private Date modifyTime;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @Column(name = "create_time")
-    private Date createTime;
+	private String avatar;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @Column(name = "modify_time")
-    private Date modifyTime;
+	private Long phone;
 
-    private String avatar;
+	private String sex;
 
-    private Long phone;
+	private String description;
 
-    private String sex;
+	private Boolean status;
 
-    private String description;
+	public void setUsername(String username) {
+		this.username = username == null ? "" : username.trim();
+	}
 
-    private Boolean status;
-
-    public void setUsername(String username) {
-        this.username = username == null ? "" : username.trim();
-    }
-
-    public void setPassword(String password) {
-        this.password = password == null ? "" : password.trim();
-    }
+	public void setPassword(String password) {
+		this.password = password == null ? "" : password.trim();
+	}
 }

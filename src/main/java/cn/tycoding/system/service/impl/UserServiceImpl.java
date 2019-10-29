@@ -163,5 +163,10 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         userMapper.updateByExampleSelective(user, example);
     }
 
+    @Override
+    public List<User> list(User user) {
+        return userMapper.list(user);
+    }
+
 
 }
