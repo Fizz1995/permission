@@ -31,4 +31,7 @@
     <select id="list" resultType="cn.tycoding.system.entity.User">
         select id,username,password from tb_user
     </select>
+    <select id="get" resultType="cn.tycoding.system.entity.User">
+        select id, username, password, salt, dept_id from tb_user where id=#{id,jdbcType=BIGINT}
+    </select>
 </mapper>

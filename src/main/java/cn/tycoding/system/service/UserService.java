@@ -5,7 +5,6 @@ import cn.tycoding.common.service.BaseService;
 import cn.tycoding.system.entity.Menu;
 import cn.tycoding.system.entity.User;
 import cn.tycoding.system.entity.UserWithRole;
-
 import java.util.List;
 
 /**
@@ -33,4 +32,6 @@ public interface UserService extends BaseService<User> {
     void updatePassword(String password);
 
     List<User> list(User user);
+
+	User get(Long id);
 }

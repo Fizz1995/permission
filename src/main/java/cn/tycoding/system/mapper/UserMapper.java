@@ -3,8 +3,6 @@ package cn.tycoding.system.mapper;
 import cn.tycoding.common.config.MyMapper;
 import cn.tycoding.system.entity.User;
 import cn.tycoding.system.entity.UserWithRole;
-import org.apache.ibatis.annotations.Mapper;
-
 import java.util.List;
 
 /**
@@ -18,6 +16,8 @@ public interface UserMapper extends MyMapper<User> {
 	List<User> list(User user);
 
 	List<UserWithRole> findById(Long id);
+
+	User get(Long id);
 
 
 }

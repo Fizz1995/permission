@@ -1,5 +1,6 @@
 package cn.tycoding.system.controller;
 
+import cn.tycoding.common.dto.ResponseCode;
 import cn.tycoding.system.entity.User;
 import cn.tycoding.system.service.UserService;
 import com.alibaba.excel.EasyExcel;
@@ -9,11 +10,11 @@ import java.net.URLEncoder;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("excel")
 public class ExcelApi {
 
@@ -27,7 +28,7 @@ public class ExcelApi {
 			List<User> dataList = service.list(user);
 			String fileName = URLEncoder.encode("测试", "UTF-8");
 			//设置相关response参数
-			ExcelHead.response(response,fileName);
+			ExcelHead.response(response, fileName);
 			// 这里URLEncoder.encode可以防止中文乱码 当然和easyexcel没有关系
 			String title = "测试时间";
 			EasyExcel.write(response.getOutputStream())
@@ -38,6 +39,12 @@ public class ExcelApi {
 			e.printStackTrace();
 		}
 
+	}
+
+	@GetMapping("get")
+	public ResponseCode get(Long id) {
+		User user = service.get(id);
+		return ResponseCode.success(user);
 	}
 
 }

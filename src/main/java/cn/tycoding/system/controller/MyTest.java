@@ -1,6 +1,6 @@
 package cn.tycoding.system.controller;
 
-import java.lang.reflect.Field;
+import com.alibaba.fastjson.JSON;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,31 +8,21 @@ public class MyTest {
 
 
 	public static void main(String[] args) {
-		Class<DownloadData> clz = DownloadData.class;
-		Field[] fields = clz.getDeclaredFields();
-		List<List<String>> lists = new ArrayList<>();
-		String name = ExcelHead.getTitle("统计", "2010", "2020");
-		String[] array = {"字符标题", "数字标题", "日期标题"};
-		for (String s : array) {
-			List<String> strings = new ArrayList<>();
-			strings.add(name);
-			strings.add(s);
-			lists.add(strings);
-		}
-		System.out.println(lists);
-		/*Class<DownloadData2> aClass = DownloadData2.class;
-		Field[] f = aClass.getDeclaredFields();
-		for (Field field : f) {
-			boolean fieldHasAnno = field.isAnnotationPresent(ExcelProperty.class);
-			if (fieldHasAnno) {
-				ExcelProperty excelValue = field.getAnnotation(ExcelProperty.class);
-				//输出注解属性
-				String[] value = excelValue.value();
-				List<String> list = Arrays.asList(value);
+		String s = "[3d55f2a141e84394abf6e98b9de8f8fa,42cae3e0a96642c3ae5e373b8dfb330c,2]";
+		//List<String> list = JSON.parseArray(s, String.class);
+		//System.out.println(list);
+		String a = "3d55f2a141e84394abf6e98b9de8f8fa";
+		String a1 = "42cae3e0a96642c3ae5e373b8dfb330c";
+		String a2 = "0";
+		List<String> aList = new ArrayList<>();
+		aList.add(a);
+		aList.add(a1);
+		aList.add(a2);
+		System.out.println(aList);
+		String s1 = JSON.toJSONString(aList);
+		System.err.println(s1);
 
-				System.out.println("-----------" + list + "长度" + list.size());
-			}
-		}*/
+
 	}
 
 }

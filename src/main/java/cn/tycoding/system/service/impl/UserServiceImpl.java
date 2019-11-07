@@ -13,16 +13,15 @@ import cn.tycoding.system.mapper.UserMapper;
 import cn.tycoding.system.mapper.UserRoleMapper;
 import cn.tycoding.system.service.UserRoleService;
 import cn.tycoding.system.service.UserService;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author tycoding
@@ -166,6 +165,11 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @Override
     public List<User> list(User user) {
         return userMapper.list(user);
+    }
+
+    @Override
+    public User get(Long id) {
+        return userMapper.get(id);
     }
 
 

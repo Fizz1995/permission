@@ -2,16 +2,17 @@ package cn.tycoding.system.entity;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
-import lombok.ToString;
-import org.springframework.format.annotation.DateTimeFormat;
-
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import java.io.Serializable;
-import java.util.Date;
+import lombok.Data;
+import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @author tycoding
@@ -20,6 +21,7 @@ import java.util.Date;
 @Data
 @ToString
 @Table(name = "tb_user")
+@JsonInclude(Include.NON_NULL)
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 3554316034860494763L;
